@@ -1,143 +1,31 @@
 <!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#244b38">
-  <meta name="description" content="Fragen stellen und Antworten mit Bibelstellen entdecken.">
-  <link rel="manifest" href="manifest.json">
-  <title>Frag die Bibel</title>
-  <style>
-    :root{--green:#244b38;--green2:#315d48;--cream:#f3efe5;--gold:#c5a45c;--ink:#203328;--muted:#68766c;--white:#fff}
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    header{background:var(--green);color:white;padding:calc(20px + env(safe-area-inset-top)) 20px 24px;border-radius:0 0 26px 26px}
-    .brand{font-size:12px;letter-spacing:3px;color:#e5d6ae;font-weight:700}
-    h1{font-size:32px;line-height:1.1;margin:10px 0 8px}
-    header p{margin:0;color:#e4e9e3}
-    main{max-width:680px;margin:auto;padding:18px 16px 42px}
-    .card{background:white;border-radius:20px;padding:18px;margin:0 0 16px;box-shadow:0 5px 20px #1b3d2b0d}
-    .verse{background:var(--green2);color:white}
-    .eyebrow{font-size:11px;letter-spacing:1.5px;font-weight:800;color:var(--gold);margin:0 0 10px}
-    .verse h2{margin:0 0 8px;font-size:21px}
-    .verse p{line-height:1.5;margin:0;color:#f4f3ed}
-    .note{font-size:12px;color:#d7e0d9;margin-top:10px}
-    h2{font-size:20px;margin:0 0 12px}
-    textarea{width:100%;min-height:105px;resize:vertical;border:1px solid #d9dfd8;border-radius:14px;padding:14px;font:inherit;font-size:16px;background:#fff;color:var(--ink)}
-    button{border:0;border-radius:14px;background:var(--green);color:white;font-size:16px;font-weight:700;padding:15px 18px;width:100%;margin-top:12px}
-    button:disabled{opacity:.45}
-    .hint{font-size:12px;color:var(--muted);line-height:1.45}
-    .answer{display:none}
-    .answer h3{font-size:16px;margin:16px 0 6px;color:var(--green)}
-    .answer p{line-height:1.55;margin:0 0 8px}
-    .reference{background:#f3f6f2;border-left:3px solid var(--gold);padding:10px 12px;border-radius:8px;margin:8px 0}
-    .chatitem{border-top:1px solid #e7ebe6;padding:12px 0}
-    .chatitem:first-child{border-top:0}
-    .q{font-weight:700;margin-bottom:6px}
-    .smallbtn{background:transparent;color:var(--green);border:1px solid #cbd6cc;padding:10px;width:auto;font-size:13px}
-    footer{text-align:center;color:var(--muted);font-size:12px;padding:4px 20px 28px;line-height:1.5}
-    .toprow{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .toprow span{font-size:12px;color:#e5d6ae}
-  </style>
-</head>
-<body>
-  <header>
-    <div class="toprow"><div class="brand">BIBEL • GLAUBE • ANTWORTEN</div><span>VORVERSION</span></div>
-    <h1>Frag die Bibel</h1>
-    <p>Stelle deine Frage und entdecke, was die Bibel dazu sagt.</p>
-  </header>
-  <main>
-    <section class="card verse">
-      <div class="eyebrow">VERS DES TAGES</div>
-      <h2>Psalm 23,1</h2>
-      <p>Der Psalm beschreibt Gott als einen Hirten, der für den Menschen sorgt und ihn begleitet.</p>
-      <div class="note">Luther 1912 · Hier zunächst eine sinngemäße Zusammenfassung, kein wörtliches Zitat.</div>
-    </section>
-
-    <section class="card">
-      <h2>Was möchtest du wissen?</h2>
-      <textarea id="question" placeholder="Zum Beispiel: Was sagt die Bibel über Angst?"></textarea>
-      <button id="ask">Biblische Antwort suchen</button>
-      <p class="hint">Diese erste Version zeigt den Ablauf mit einer Beispielantwort. Die echte KI und eine geprüfte Bibeltext-Datenquelle werden im nächsten Schritt verbunden.</p>
-    </section>
-
-    <section class="card answer" id="answer" aria-live="polite">
-      <div class="eyebrow">ANTWORT AUS DER BIBEL · DEMO</div>
-      <h2 id="answerTitle">Biblische Orientierung</h2>
-      <p id="answerIntro"></p>
-      <h3>Passende Bibelstellen</h3>
-      <div id="references"></div>
-      <h3>Im Zusammenhang verstehen</h3>
-      <p id="answerContext"></p>
-      <p class="hint">Hinweis: Dies ist eine vorbereitete Demo-Antwort, keine KI-Auskunft. Vor Veröffentlichung werden alle Zitate und Quellen geprüft.</p>
-      <button class="smallbtn" id="followup">Eine Rückfrage stellen</button>
-    </section>
-
-    <section class="card">
-      <div class="toprow">
-        <h2 style="margin:0">Dein Gespräch</h2>
-        <button class="smallbtn" id="clear" style="margin:0">Verlauf löschen</button>
-      </div>
-      <div id="history" class="hint" style="margin-top:12px">Noch keine Fragen gestellt.</div>
-    </section>
-  </main>
-  <footer>Frag die Bibel · Erste Testversion<br>Deine Fragen werden in dieser Demo nur lokal auf diesem Gerät gespeichert.</footer>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#244b38"><link rel="manifest" href="manifest.json"><title>Frag die Bibel</title>
+<style>
+:root{--g:#244b38;--g2:#315d48;--cream:#f3efe5;--gold:#c5a45c;--ink:#203328;--muted:#68766c}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:var(--g);color:white;padding:calc(20px + env(safe-area-inset-top)) 20px 24px;border-radius:0 0 26px 26px}.brand{font-size:12px;letter-spacing:3px;color:#e5d6ae;font-weight:700}h1{font-size:32px;margin:10px 0 8px}header p{margin:0;color:#e4e9e3}
+main{max-width:680px;margin:auto;padding:18px 16px 42px}.card{background:white;border-radius:20px;padding:18px;margin-bottom:16px;box-shadow:0 5px 20px #1b3d2b0d}.verse{background:var(--g2);color:white}.eyebrow{font-size:11px;letter-spacing:1.5px;font-weight:800;color:var(--gold);margin-bottom:10px}h2{font-size:20px;margin:0 0 12px}.verse h2{color:white}.verse p{line-height:1.55;margin:0}
+textarea{width:100%;min-height:100px;resize:vertical;border:1px solid #d9dfd8;border-radius:14px;padding:14px;font:inherit;font-size:16px}button{border:0;border-radius:14px;background:var(--g);color:white;font-size:16px;font-weight:700;padding:15px;width:100%;margin-top:12px}.hint{font-size:12px;color:var(--muted);line-height:1.5}.answer{display:none}.answer h3{font-size:16px;margin:18px 0 7px;color:var(--g)}.answer p{line-height:1.55}.scripture{background:#f3f6f2;border-left:3px solid var(--gold);padding:13px;border-radius:8px;margin:9px 0 13px;line-height:1.6}.scripture strong{display:block;color:var(--g);font-size:14px;margin-bottom:7px}.scripture blockquote{margin:0;font-size:16px}.chatitem{border-top:1px solid #e7ebe6;padding:12px 0}.q{font-weight:700;margin-bottom:5px}.smallbtn{background:white;color:var(--g);border:1px solid #cbd6cc;padding:10px;width:auto;font-size:13px}footer{text-align:center;color:var(--muted);font-size:12px;padding:4px 20px 28px;line-height:1.5}
+</style></head><body>
+<header><div class="brand">BIBEL • GLAUBE • ANTWORTEN</div><h1>Frag die Bibel</h1><p>Stelle deine Frage und entdecke, was die Bibel dazu sagt.</p></header>
+<main>
+<section class="card verse"><div class="eyebrow">VERS DES TAGES</div><h2>Psalm 23,1</h2><p>„Der HERR ist mein Hirte; mir wird nichts mangeln.“</p><p class="hint" style="color:#e0e9e1;margin:9px 0 0">Lutherbibel 1912</p></section>
+<section class="card"><h2>Was möchtest du wissen?</h2><textarea id="question" placeholder="Zum Beispiel: Was sagt die Bibel über Angst?"></textarea><button id="ask">Biblische Antwort suchen</button><p class="hint">Demo-Version: Die angezeigten Verse sind echte Textbeispiele aus der Lutherbibel 1912. Die KI-Suche nach passenden Stellen ist noch nicht angeschlossen.</p></section>
+<section class="card answer" id="answer" aria-live="polite">
+<div class="eyebrow">BIBLISCHE ANTWORT · DEMO</div><h2>Was sagt die Bibel über Angst?</h2><p>Die folgenden Stellen sprechen von Gottes Nähe und davon, Sorgen im Gebet vor ihn zu bringen.</p>
+<h3>1. Jesaja 41,10</h3><div class="scripture"><strong>Lutherbibel 1912 · Jesaja 41,10</strong><blockquote>„Fürchte dich nicht, ich bin mit dir; weiche nicht, denn ich bin dein Gott; ich stärke dich, ich helfe dir auch, ich erhalte dich durch die rechte Hand meiner Gerechtigkeit.“</blockquote></div><p>Der Vers spricht Israel Gottes Beistand zu. Er nennt Gottes Nähe, Stärke und Hilfe als Grund, sich nicht zu fürchten.</p>
+<h3>2. Psalm 23,4</h3><div class="scripture"><strong>Lutherbibel 1912 · Psalm 23,4</strong><blockquote>„Und ob ich schon wanderte im finstern Tal, fürchte ich kein Unglück; denn du bist bei mir, dein Stecken und dein Stab trösten mich.“</blockquote></div><p>Das Bild des Hirten beschreibt Vertrauen auf Gottes Begleitung, auch auf einem dunklen und schwierigen Weg.</p>
+<h3>3. Philipper 4,6–7</h3><div class="scripture"><strong>Lutherbibel 1912 · Philipper 4,6–7</strong><blockquote>„Sorget nichts! sondern in allen Dingen lasset eure Bitten im Gebet und Flehen mit Danksagung vor Gott kund werden. Und der Friede Gottes, welcher höher ist denn alle Vernunft, bewahre eure Herzen und Sinne in Christo Jesu!“</blockquote></div><p>Paulus ermutigt die Gemeinde, ihre Anliegen im Gebet vor Gott zu bringen, und spricht vom Frieden Gottes.</p>
+<h3>Zusammenfassung</h3><p>Diese Stellen zeigen unterschiedliche biblische Perspektiven: Gottes Beistand, seine Begleitung und das Gebet. Lies sie am besten jeweils im Zusammenhang des ganzen Abschnitts.</p>
+<p class="hint">Hinweis: Dies ist eine fest eingebaute Beispielantwort. Sie reagiert noch nicht inhaltlich auf deine konkrete Frage. Die echte KI-Funktion und eine geprüfte Bibeltext-Datenquelle kommen als nächster Entwicklungsschritt.</p><button class="smallbtn" id="followup">Eine Rückfrage vorbereiten</button></section>
+<section class="card"><div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><h2 style="margin:0">Dein Gespräch</h2><button class="smallbtn" id="clear" style="margin:0">Verlauf löschen</button></div><div id="history" class="hint" style="margin-top:12px">Noch keine Fragen gestellt.</div></section>
+</main><footer>Frag die Bibel · Testversion 2<br>Der Verlauf dieser Demo wird nur lokal auf diesem Gerät gespeichert.</footer>
 <script>
-const $ = id => document.getElementById(id);
-const historyKey = "frag-die-bibel-history-v1";
-const demo = {
-  title: "Gott begleitet Menschen in schwierigen Zeiten",
-  intro: "Die Bibel verschweigt schwere Zeiten nicht. Sie enthält Gebete und Berichte von Menschen, die Angst, Trauer oder Unsicherheit erlebt haben. Zugleich spricht sie davon, dass Menschen Gott um Hilfe bitten dürfen.",
-  refs: [
-    ["Psalm 23,1–4", "Der Psalm schildert Gott als Hirten und beschreibt Vertrauen auch auf schwierigen Wegen."],
-    ["Jesaja 41,10", "Diese Stelle ermutigt dazu, sich nicht zu fürchten und auf Gottes Beistand zu vertrauen."],
-    ["Philipper 4,6–7", "Paulus spricht darüber, Sorgen im Gebet vor Gott zu bringen."]
-  ],
-  context: "Lies die Verse jeweils im ganzen Abschnitt. Die Bibel gibt nicht auf jede persönliche Situation eine einfache Erklärung. Diese Stellen können eine Grundlage zum Nachdenken und Beten sein."
-};
-function loadHistory(){ try{return JSON.parse(localStorage.getItem(historyKey)||"[]")}catch{return []} }
-function saveHistory(items){ localStorage.setItem(historyKey, JSON.stringify(items)); renderHistory(); }
-function renderHistory(){
-  const items=loadHistory();
-  $("history").innerHTML = "";
-  if(!items.length){$("history").textContent="Noch keine Fragen gestellt.";return;}
-  items.slice().reverse().forEach(item=>{
-    const div=document.createElement("div");div.className="chatitem";
-    const q=document.createElement("div");q.className="q";q.textContent=item.q;
-    const a=document.createElement("div");a.textContent="Demo-Antwort mit Bibelstellen angezeigt.";
-    div.append(q,a);$("history").append(div);
-  });
-}
-function showAnswer(q){
-  $("answerTitle").textContent=demo.title;
-  $("answerIntro").textContent=demo.intro;
-  $("answerContext").textContent=demo.context;
-  const refs=$("references");refs.innerHTML="";
-  demo.refs.forEach(([name,desc])=>{
-    const div=document.createElement("div");div.className="reference";
-    const strong=document.createElement("strong");strong.textContent=name;
-    const p=document.createElement("p");p.textContent=desc;p.style.margin="5px 0 0";
-    div.append(strong,p);refs.append(div);
-  });
-  $("answer").style.display="block";
-  const items=loadHistory();items.push({q,at:Date.now()});saveHistory(items);
-  $("answer").scrollIntoView({behavior:"smooth",block:"start"});
-}
-$("ask").addEventListener("click",()=>{
-  const q=$("question").value.trim();if(!q)return;
-  showAnswer(q);
-});
-$("followup").addEventListener("click",()=>{
-  $("question").value="Kannst du mir eine dieser Bibelstellen genauer erklären?";
-  $("question").focus();window.scrollTo({top:0,behavior:"smooth"});
-});
-$("clear").addEventListener("click",()=>{
-  if(confirm("Möchtest du den lokalen Demo-Verlauf wirklich löschen?")){localStorage.removeItem(historyKey);renderHistory();}
-});
-renderHistory();
-if("serviceWorker" in navigator && location.protocol.startsWith("http")) {
-  window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
-}
-</script>
-</body>
-</html>
+const $=id=>document.getElementById(id),key="fdb-history-v2";
+function get(){try{return JSON.parse(localStorage.getItem(key)||"[]")}catch{return []}}
+function render(){let items=get();$("history").innerHTML="";if(!items.length){$("history").textContent="Noch keine Fragen gestellt.";return}items.slice().reverse().forEach(x=>{let d=document.createElement("div");d.className="chatitem";let q=document.createElement("div");q.className="q";q.textContent=x.q;let a=document.createElement("div");a.textContent="Beispielantwort mit ausgeschriebenen Bibelversen angezeigt.";d.append(q,a);$("history").append(d)})}
+$("ask").onclick=()=>{let q=$("question").value.trim();if(!q)return;$("answer").style.display="block";let items=get();items.push({q,at:Date.now()});localStorage.setItem(key,JSON.stringify(items));render();$("answer").scrollIntoView({behavior:"smooth"})};
+$("followup").onclick=()=>{$("question").value="Kannst du mir einen dieser Bibelverse genauer erklären?";$("question").focus();window.scrollTo({top:0,behavior:"smooth"})};
+$("clear").onclick=()=>{if(confirm("Lokalen Demo-Verlauf löschen?")){localStorage.removeItem(key);render()}};render();
+if("serviceWorker"in navigator&&location.protocol.startsWith("http"))addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+</script></body></html>
