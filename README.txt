@@ -16,3 +16,6 @@ GitHub:
 Ersetze index.html, manifest.json und sw.js im Repository durch diese Dateien.
 Dann Commit changes. Danach GitHub Pages aktualisieren und Safari vollständig neu laden.
 Wenn weiterhin eine alte Version erscheint, Safari-Tab schließen und erneut öffnen.
+
+
+Version 4: Die Hoffnung-Themenliste verwendet nun Psalm 62:6 anstelle der Stelle, die in Version 3 nicht ausgelesen wurde. Der Service-Worker-Cache wurde ebenfalls auf Version 4 gesetzt.

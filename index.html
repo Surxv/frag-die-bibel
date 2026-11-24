@@ -40,14 +40,14 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:4px 20px 28px
 </section>
 <section class="card"><div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><h2 style="margin:0">Dein Gespräch</h2><button class="smallbtn" id="clear" style="margin:0">Verlauf löschen</button></div><div id="history" class="hint" style="margin-top:12px">Noch keine Fragen gestellt.</div></section>
 </main>
-<footer>Frag die Bibel · Testversion 3<br>Diese Zwischenversion nutzt eine externe Bibel-Text-API. Noch keine KI-Antworten.</footer>
+<footer>Frag die Bibel · Testversion 4<br>Diese Zwischenversion nutzt eine externe Bibel-Text-API. Noch keine KI-Antworten.</footer>
 <script>
-const $=id=>document.getElementById(id), KEY="fdb-history-v3";
+const $=id=>document.getElementById(id), KEY="fdb-history-v4";
 const topics=[
  {words:["angst","ängst","furcht","sorge","sorgen","fürchte","fuerchte"],name:"Angst und Gottes Beistand",intro:"Diese Stellen sprechen von Gottes Nähe, Trost und davon, Sorgen im Gebet vor ihn zu bringen.",refs:["Jesaja 41:10","Psalm 23:4","Philipper 4:6-7"],explain:"Jesaja 41 richtet eine Zusage an Gottes Volk. Psalm 23 verwendet das Bild Gottes als Hirten. In Philipper 4 ermutigt Paulus die Gemeinde zum Gebet und spricht vom Frieden Gottes."},
  {words:["liebe","lieben","geliebt"],name:"Liebe",intro:"Diese Stellen sprechen von Gottes Liebe und davon, wie Menschen einander lieben sollen.",refs:["1. Johannes 4:7-8","Römer 8:38-39","1. Korinther 13:4-7"],explain:"Die Texte betrachten Liebe aus unterschiedlichen Blickwinkeln: als von Gott kommend, als nichts von Gottes Liebe Trennendes und als Haltung im Umgang miteinander."},
  {words:["vergebung","vergeben","schuld","sünde","sünden"],name:"Vergebung",intro:"Diese Stellen sprechen von Bekenntnis, Vergebung und Gottes Barmherzigkeit.",refs:["1. Johannes 1:9","Psalm 103:8-12","Epheser 4:32"],explain:"Die Stellen sprechen von Gottes Vergebung und Barmherzigkeit und verbinden sie mit einem versöhnlichen Umgang untereinander."},
- {words:["hoffnung","hoffnungslos","zukunft"],name:"Hoffnung",intro:"Diese Stellen sprechen von Hoffnung, Vertrauen und Gottes Zukunftsverheißungen.",refs:["Römer 15:13","Jeremia 29:11","Psalm 42:12"],explain:"Die Verse stehen in unterschiedlichen Zusammenhängen. Zusammen zeigen sie, wie Hoffnung und Vertrauen in Gott in der Bibel beschrieben werden."},
+ {words:["hoffnung","hoffnungslos","zukunft"],name:"Hoffnung",intro:"Diese Stellen sprechen von Hoffnung, Vertrauen und Gottes Zukunftsverheißungen.",refs:["Römer 15:13","Jeremia 29:11","Psalm 62:6"],explain:"Die Verse stehen in unterschiedlichen Zusammenhängen. Zusammen zeigen sie, wie Hoffnung und Vertrauen in Gott in der Bibel beschrieben werden."},
  {words:["gebet","beten","betet","beten"],name:"Gebet",intro:"Diese Stellen zeigen, wie die Bibel über Gebet und das Reden mit Gott spricht.",refs:["Matthäus 6:9-13","Philipper 4:6-7","1. Thessalonicher 5:17"],explain:"Jesus lehrt seine Jünger ein Gebet. Paulus und andere neutestamentliche Schreiber ermutigen dazu, Anliegen vor Gott zu bringen und im Gebet zu bleiben."},
  {words:["gott","glaube","vertrauen"],name:"Gott und Vertrauen",intro:"Diese Stellen sprechen von Gottes Wesen, seiner Liebe und dem Vertrauen auf ihn.",refs:["Johannes 3:16","Psalm 23:1","Römer 8:28"],explain:"Die Verse stammen aus verschiedenen biblischen Zusammenhängen. Sie sprechen von Gottes Liebe, seiner Fürsorge und dem Vertrauen auf sein Wirken."}
 ];
@@ -91,7 +91,7 @@ async function ask(){
   items.forEach((p,i)=>{const txt=passageText(p);const ref=passageReference(p,i,chosen.refs);
    const box=document.createElement("div");box.className="scripture";
    const strong=document.createElement("strong");strong.textContent="Lutherbibel 1912 · "+ref;
-   const quote=document.createElement("blockquote");quote.textContent=txt||"Der Text konnte für diese Stelle nicht ausgelesen werden.";
+   const quote=document.createElement("blockquote");quote.textContent=txt||"Diese Bibelstelle konnte von der API nicht geladen werden.";
    box.append(strong,quote);wrap.append(box);
   });
   if(items.length<chosen.refs.length){const n=document.createElement("p");n.className="hint";n.textContent="Einige angefragte Stellen konnten nicht geladen werden. Bitte prüfe die Referenzen.";wrap.append(n)}
