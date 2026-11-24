@@ -1,20 +1,18 @@
-Frag die Bibel – Testversion 2
+Frag die Bibel – V3: echte Bibeltext-Abfrage
 
-Änderung: Die Beispielantwort zeigt nun den Wortlaut von drei Beispielstellen
-aus der Lutherbibel 1912 und jeweils eine getrennte Erklärung. Der Tagesvers
-zeigt Psalm 23,1 im Wortlaut.
+Diese Zwischenversion ruft den Wortlaut der Lutherbibel 1912 über die Midvash Bible API ab:
+https://api.midvash.com/v1/passages?refs=...&version=luth1912
 
-Wichtig: Dies bleibt ein Frontend-Demo-Prototyp. Die Beispielantwort ist fest
-eingebaut und wird unabhängig von der eingegebenen Frage angezeigt. Es gibt
-noch keine echte KI-Suche und keine dynamische Bibeltext-Abfrage.
+Die API-Dokumentation nennt Luther 1912 als gemeinfreie Übersetzung und dokumentiert
+den passages-Endpunkt. Bitte prüfe bei jeder Veröffentlichung weiterhin die Quellen-
+und Lizenzangaben der API.
 
-Textquellen:
-Psalm 23: https://predigtinspiration.de/bibel/psalm/23
-Jesaja 41: https://predigtinspiration.de/bibel/jesaja/41
-Philipper 4: https://www.bibledejesuschrist.org/content/texts/deu_lut1912/PP4.html
+Einschränkung:
+Die Themen- und Stellenzuordnung in index.html ist eine einfache Stichwortregel.
+Es ist NOCH KEINE KI angeschlossen und die App versteht nicht jede frei formulierte Frage.
+Die Erklärungen sind vorbereitete Texte, keine dynamische theologische Analyse.
 
-GitHub-Aktualisierung:
-1. Repository öffnen und index.html bearbeiten/ersetzen.
-2. manifest.json und sw.js ebenfalls ersetzen.
-3. Commit changes.
-4. GitHub Pages neu laden. Bei alter Version Safari-Tab schließen und neu öffnen.
+GitHub:
+Ersetze index.html, manifest.json und sw.js im Repository durch diese Dateien.
+Dann Commit changes. Danach GitHub Pages aktualisieren und Safari vollständig neu laden.
+Wenn weiterhin eine alte Version erscheint, Safari-Tab schließen und erneut öffnen.

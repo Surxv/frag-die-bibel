@@ -1,31 +1,105 @@
 <!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#244b38"><link rel="manifest" href="manifest.json"><title>Frag die Bibel</title>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#244b38"><link rel="manifest" href="manifest.json">
+<title>Frag die Bibel</title>
 <style>
 :root{--g:#244b38;--g2:#315d48;--cream:#f3efe5;--gold:#c5a45c;--ink:#203328;--muted:#68766c}
 *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-header{background:var(--g);color:white;padding:calc(20px + env(safe-area-inset-top)) 20px 24px;border-radius:0 0 26px 26px}.brand{font-size:12px;letter-spacing:3px;color:#e5d6ae;font-weight:700}h1{font-size:32px;margin:10px 0 8px}header p{margin:0;color:#e4e9e3}
-main{max-width:680px;margin:auto;padding:18px 16px 42px}.card{background:white;border-radius:20px;padding:18px;margin-bottom:16px;box-shadow:0 5px 20px #1b3d2b0d}.verse{background:var(--g2);color:white}.eyebrow{font-size:11px;letter-spacing:1.5px;font-weight:800;color:var(--gold);margin-bottom:10px}h2{font-size:20px;margin:0 0 12px}.verse h2{color:white}.verse p{line-height:1.55;margin:0}
-textarea{width:100%;min-height:100px;resize:vertical;border:1px solid #d9dfd8;border-radius:14px;padding:14px;font:inherit;font-size:16px}button{border:0;border-radius:14px;background:var(--g);color:white;font-size:16px;font-weight:700;padding:15px;width:100%;margin-top:12px}.hint{font-size:12px;color:var(--muted);line-height:1.5}.answer{display:none}.answer h3{font-size:16px;margin:18px 0 7px;color:var(--g)}.answer p{line-height:1.55}.scripture{background:#f3f6f2;border-left:3px solid var(--gold);padding:13px;border-radius:8px;margin:9px 0 13px;line-height:1.6}.scripture strong{display:block;color:var(--g);font-size:14px;margin-bottom:7px}.scripture blockquote{margin:0;font-size:16px}.chatitem{border-top:1px solid #e7ebe6;padding:12px 0}.q{font-weight:700;margin-bottom:5px}.smallbtn{background:white;color:var(--g);border:1px solid #cbd6cc;padding:10px;width:auto;font-size:13px}footer{text-align:center;color:var(--muted);font-size:12px;padding:4px 20px 28px;line-height:1.5}
-</style></head><body>
+header{background:var(--g);color:white;padding:calc(20px + env(safe-area-inset-top)) 20px 24px;border-radius:0 0 26px 26px}
+.brand{font-size:12px;letter-spacing:3px;color:#e5d6ae;font-weight:700}h1{font-size:32px;margin:10px 0 8px}header p{margin:0;color:#e4e9e3}
+main{max-width:680px;margin:auto;padding:18px 16px 42px}.card{background:white;border-radius:20px;padding:18px;margin-bottom:16px;box-shadow:0 5px 20px #1b3d2b0d}
+.verse{background:var(--g2);color:white}.eyebrow{font-size:11px;letter-spacing:1.5px;font-weight:800;color:var(--gold);margin-bottom:10px}
+h2{font-size:20px;margin:0 0 12px}.verse h2{color:white}.verse p{line-height:1.55;margin:0}
+textarea{width:100%;min-height:100px;resize:vertical;border:1px solid #d9dfd8;border-radius:14px;padding:14px;font:inherit;font-size:16px}
+button{border:0;border-radius:14px;background:var(--g);color:white;font-size:16px;font-weight:700;padding:15px;width:100%;margin-top:12px}
+button:disabled{opacity:.5}.hint{font-size:12px;color:var(--muted);line-height:1.5}.answer{display:none}
+.answer h3{font-size:16px;margin:18px 0 7px;color:var(--g)}.answer p{line-height:1.55}
+.scripture{background:#f3f6f2;border-left:3px solid var(--gold);padding:13px;border-radius:8px;margin:9px 0 13px;line-height:1.6}
+.scripture strong{display:block;color:var(--g);font-size:14px;margin-bottom:7px}.scripture blockquote{margin:0;font-size:16px;white-space:pre-wrap}
+.chatitem{border-top:1px solid #e7ebe6;padding:12px 0}.q{font-weight:700;margin-bottom:5px}
+.smallbtn{background:white;color:var(--g);border:1px solid #cbd6cc;padding:10px;width:auto;font-size:13px}
+.status{padding:10px 12px;border-radius:10px;background:#f3f6f2;font-size:13px;line-height:1.45;margin:10px 0}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:4px 20px 28px;line-height:1.5}
+</style></head>
+<body>
 <header><div class="brand">BIBEL • GLAUBE • ANTWORTEN</div><h1>Frag die Bibel</h1><p>Stelle deine Frage und entdecke, was die Bibel dazu sagt.</p></header>
 <main>
-<section class="card verse"><div class="eyebrow">VERS DES TAGES</div><h2>Psalm 23,1</h2><p>„Der HERR ist mein Hirte; mir wird nichts mangeln.“</p><p class="hint" style="color:#e0e9e1;margin:9px 0 0">Lutherbibel 1912</p></section>
-<section class="card"><h2>Was möchtest du wissen?</h2><textarea id="question" placeholder="Zum Beispiel: Was sagt die Bibel über Angst?"></textarea><button id="ask">Biblische Antwort suchen</button><p class="hint">Demo-Version: Die angezeigten Verse sind echte Textbeispiele aus der Lutherbibel 1912. Die KI-Suche nach passenden Stellen ist noch nicht angeschlossen.</p></section>
+<section class="card verse"><div class="eyebrow">VERS DES TAGES</div><h2>Psalm 23,1</h2><p id="dailyText">„Der HERR ist mein Hirte; mir wird nichts mangeln.“</p><p class="hint" style="color:#e0e9e1;margin:9px 0 0">Lutherbibel 1912 · Textabruf über Midvash Bible API</p></section>
+<section class="card">
+<h2>Was möchtest du wissen?</h2><textarea id="question" placeholder="Zum Beispiel: Was sagt die Bibel über Angst?"></textarea>
+<button id="ask">Biblische Antwort suchen</button>
+<p class="hint">Die App ruft den Wortlaut der Lutherbibel 1912 aus einer externen Bibel-API ab. Die Themenzuordnung ist in dieser Zwischenversion noch eine einfache Stichwortsuche, keine KI.</p>
+</section>
 <section class="card answer" id="answer" aria-live="polite">
-<div class="eyebrow">BIBLISCHE ANTWORT · DEMO</div><h2>Was sagt die Bibel über Angst?</h2><p>Die folgenden Stellen sprechen von Gottes Nähe und davon, Sorgen im Gebet vor ihn zu bringen.</p>
-<h3>1. Jesaja 41,10</h3><div class="scripture"><strong>Lutherbibel 1912 · Jesaja 41,10</strong><blockquote>„Fürchte dich nicht, ich bin mit dir; weiche nicht, denn ich bin dein Gott; ich stärke dich, ich helfe dir auch, ich erhalte dich durch die rechte Hand meiner Gerechtigkeit.“</blockquote></div><p>Der Vers spricht Israel Gottes Beistand zu. Er nennt Gottes Nähe, Stärke und Hilfe als Grund, sich nicht zu fürchten.</p>
-<h3>2. Psalm 23,4</h3><div class="scripture"><strong>Lutherbibel 1912 · Psalm 23,4</strong><blockquote>„Und ob ich schon wanderte im finstern Tal, fürchte ich kein Unglück; denn du bist bei mir, dein Stecken und dein Stab trösten mich.“</blockquote></div><p>Das Bild des Hirten beschreibt Vertrauen auf Gottes Begleitung, auch auf einem dunklen und schwierigen Weg.</p>
-<h3>3. Philipper 4,6–7</h3><div class="scripture"><strong>Lutherbibel 1912 · Philipper 4,6–7</strong><blockquote>„Sorget nichts! sondern in allen Dingen lasset eure Bitten im Gebet und Flehen mit Danksagung vor Gott kund werden. Und der Friede Gottes, welcher höher ist denn alle Vernunft, bewahre eure Herzen und Sinne in Christo Jesu!“</blockquote></div><p>Paulus ermutigt die Gemeinde, ihre Anliegen im Gebet vor Gott zu bringen, und spricht vom Frieden Gottes.</p>
-<h3>Zusammenfassung</h3><p>Diese Stellen zeigen unterschiedliche biblische Perspektiven: Gottes Beistand, seine Begleitung und das Gebet. Lies sie am besten jeweils im Zusammenhang des ganzen Abschnitts.</p>
-<p class="hint">Hinweis: Dies ist eine fest eingebaute Beispielantwort. Sie reagiert noch nicht inhaltlich auf deine konkrete Frage. Die echte KI-Funktion und eine geprüfte Bibeltext-Datenquelle kommen als nächster Entwicklungsschritt.</p><button class="smallbtn" id="followup">Eine Rückfrage vorbereiten</button></section>
+<div class="eyebrow">BIBLISCHE ANTWORT</div><h2 id="answerTitle">Passende Bibelstellen</h2>
+<p id="answerIntro"></p><div id="verses"></div>
+<h3>Einordnung</h3><p id="explanation"></p>
+<p class="hint" id="sourceNote">Übersetzung: Lutherbibel 1912. Die Verswiedergabe wird direkt aus der Bibeltext-API geladen. Lies die Stellen bitte im Zusammenhang.</p>
+</section>
 <section class="card"><div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><h2 style="margin:0">Dein Gespräch</h2><button class="smallbtn" id="clear" style="margin:0">Verlauf löschen</button></div><div id="history" class="hint" style="margin-top:12px">Noch keine Fragen gestellt.</div></section>
-</main><footer>Frag die Bibel · Testversion 2<br>Der Verlauf dieser Demo wird nur lokal auf diesem Gerät gespeichert.</footer>
+</main>
+<footer>Frag die Bibel · Testversion 3<br>Diese Zwischenversion nutzt eine externe Bibel-Text-API. Noch keine KI-Antworten.</footer>
 <script>
-const $=id=>document.getElementById(id),key="fdb-history-v2";
-function get(){try{return JSON.parse(localStorage.getItem(key)||"[]")}catch{return []}}
-function render(){let items=get();$("history").innerHTML="";if(!items.length){$("history").textContent="Noch keine Fragen gestellt.";return}items.slice().reverse().forEach(x=>{let d=document.createElement("div");d.className="chatitem";let q=document.createElement("div");q.className="q";q.textContent=x.q;let a=document.createElement("div");a.textContent="Beispielantwort mit ausgeschriebenen Bibelversen angezeigt.";d.append(q,a);$("history").append(d)})}
-$("ask").onclick=()=>{let q=$("question").value.trim();if(!q)return;$("answer").style.display="block";let items=get();items.push({q,at:Date.now()});localStorage.setItem(key,JSON.stringify(items));render();$("answer").scrollIntoView({behavior:"smooth"})};
-$("followup").onclick=()=>{$("question").value="Kannst du mir einen dieser Bibelverse genauer erklären?";$("question").focus();window.scrollTo({top:0,behavior:"smooth"})};
-$("clear").onclick=()=>{if(confirm("Lokalen Demo-Verlauf löschen?")){localStorage.removeItem(key);render()}};render();
-if("serviceWorker"in navigator&&location.protocol.startsWith("http"))addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+const $=id=>document.getElementById(id), KEY="fdb-history-v3";
+const topics=[
+ {words:["angst","ängst","furcht","sorge","sorgen","fürchte","fuerchte"],name:"Angst und Gottes Beistand",intro:"Diese Stellen sprechen von Gottes Nähe, Trost und davon, Sorgen im Gebet vor ihn zu bringen.",refs:["Jesaja 41:10","Psalm 23:4","Philipper 4:6-7"],explain:"Jesaja 41 richtet eine Zusage an Gottes Volk. Psalm 23 verwendet das Bild Gottes als Hirten. In Philipper 4 ermutigt Paulus die Gemeinde zum Gebet und spricht vom Frieden Gottes."},
+ {words:["liebe","lieben","geliebt"],name:"Liebe",intro:"Diese Stellen sprechen von Gottes Liebe und davon, wie Menschen einander lieben sollen.",refs:["1. Johannes 4:7-8","Römer 8:38-39","1. Korinther 13:4-7"],explain:"Die Texte betrachten Liebe aus unterschiedlichen Blickwinkeln: als von Gott kommend, als nichts von Gottes Liebe Trennendes und als Haltung im Umgang miteinander."},
+ {words:["vergebung","vergeben","schuld","sünde","sünden"],name:"Vergebung",intro:"Diese Stellen sprechen von Bekenntnis, Vergebung und Gottes Barmherzigkeit.",refs:["1. Johannes 1:9","Psalm 103:8-12","Epheser 4:32"],explain:"Die Stellen sprechen von Gottes Vergebung und Barmherzigkeit und verbinden sie mit einem versöhnlichen Umgang untereinander."},
+ {words:["hoffnung","hoffnungslos","zukunft"],name:"Hoffnung",intro:"Diese Stellen sprechen von Hoffnung, Vertrauen und Gottes Zukunftsverheißungen.",refs:["Römer 15:13","Jeremia 29:11","Psalm 42:12"],explain:"Die Verse stehen in unterschiedlichen Zusammenhängen. Zusammen zeigen sie, wie Hoffnung und Vertrauen in Gott in der Bibel beschrieben werden."},
+ {words:["gebet","beten","betet","beten"],name:"Gebet",intro:"Diese Stellen zeigen, wie die Bibel über Gebet und das Reden mit Gott spricht.",refs:["Matthäus 6:9-13","Philipper 4:6-7","1. Thessalonicher 5:17"],explain:"Jesus lehrt seine Jünger ein Gebet. Paulus und andere neutestamentliche Schreiber ermutigen dazu, Anliegen vor Gott zu bringen und im Gebet zu bleiben."},
+ {words:["gott","glaube","vertrauen"],name:"Gott und Vertrauen",intro:"Diese Stellen sprechen von Gottes Wesen, seiner Liebe und dem Vertrauen auf ihn.",refs:["Johannes 3:16","Psalm 23:1","Römer 8:28"],explain:"Die Verse stammen aus verschiedenen biblischen Zusammenhängen. Sie sprechen von Gottes Liebe, seiner Fürsorge und dem Vertrauen auf sein Wirken."}
+];
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch{return []}}
+function renderHistory(){let a=load();$("history").innerHTML="";if(!a.length){$("history").textContent="Noch keine Fragen gestellt.";return}a.slice().reverse().forEach(x=>{let d=document.createElement("div");d.className="chatitem";let q=document.createElement("div");q.className="q";q.textContent=x.q;let s=document.createElement("div");s.textContent=x.topic;d.append(q,s);$("history").append(d)})}
+function findTopic(q){let t=q.toLowerCase();return topics.find(x=>x.words.some(w=>t.includes(w)))||null}
+function getPassageShape(body){
+ let d=body?.data;
+ if(Array.isArray(d))return d;
+ if(Array.isArray(d?.passages))return d.passages;
+ if(Array.isArray(body?.passages))return body.passages;
+ if(d && (d.text||d.verses))return [d];
+ return [];
+}
+async function loadVerses(refs){
+ const url="https://api.midvash.com/v1/passages?refs="+encodeURIComponent(refs.join(","))+"&version=luth1912";
+ const response=await fetch(url);
+ if(!response.ok)throw new Error("Die Bibeltext-API antwortet gerade nicht ("+response.status+").");
+ const body=await response.json();
+ const items=getPassageShape(body);
+ if(!items.length)throw new Error("Die API hat keine lesbaren Verse zurückgegeben.");
+ return items;
+}
+function passageText(p){
+ if(typeof p.text==="string")return p.text;
+ if(Array.isArray(p.verses))return p.verses.map(v=>typeof v==="string"?v:(v.text||"")).filter(Boolean).join(" ");
+ if(p.data?.text)return p.data.text;
+ return "";
+}
+function passageReference(p,index,fallback){
+ return p.reference||p.ref||p.label||p.meta?.reference||fallback[index]||"Bibelstelle";
+}
+async function ask(){
+ const q=$("question").value.trim();if(!q)return;
+ const topic=findTopic(q);
+ const chosen=topic||{name:"Allgemeine Orientierung",intro:"Zu deiner Frage konnten wir in dieser Zwischenversion kein spezielles Thema erkennen. Hier sind einige grundlegende Bibelstellen. Sie sind nicht automatisch eine vollständige Antwort auf deine persönliche Frage.",refs:["Psalm 23:1","Johannes 3:16","Römer 8:28"],explain:"Diese drei Verse behandeln unterschiedliche Themen. Bitte lies sie im jeweiligen Kapitelzusammenhang. Die App sollte keine eindeutige Antwort behaupten, wenn die Stellen die konkrete Frage nicht direkt beantworten."};
+ $("ask").disabled=true;$("ask").textContent="Bibelverse werden geladen …";$("answer").style.display="block";
+ $("answerTitle").textContent=chosen.name;$("answerIntro").textContent=chosen.intro;$("explanation").textContent=chosen.explain;$("verses").innerHTML='<div class="status">Die vollständigen Verse werden gerade aus der Lutherbibel 1912 geladen …</div>';$("answer").scrollIntoView({behavior:"smooth",block:"start"});
+ try{
+  const items=await loadVerses(chosen.refs);const wrap=$("verses");wrap.innerHTML="";
+  items.forEach((p,i)=>{const txt=passageText(p);const ref=passageReference(p,i,chosen.refs);
+   const box=document.createElement("div");box.className="scripture";
+   const strong=document.createElement("strong");strong.textContent="Lutherbibel 1912 · "+ref;
+   const quote=document.createElement("blockquote");quote.textContent=txt||"Der Text konnte für diese Stelle nicht ausgelesen werden.";
+   box.append(strong,quote);wrap.append(box);
+  });
+  if(items.length<chosen.refs.length){const n=document.createElement("p");n.className="hint";n.textContent="Einige angefragte Stellen konnten nicht geladen werden. Bitte prüfe die Referenzen.";wrap.append(n)}
+  const h=load();h.push({q,topic:chosen.name,at:Date.now()});localStorage.setItem(KEY,JSON.stringify(h));renderHistory();
+ }catch(e){$("verses").innerHTML="";const msg=document.createElement("div");msg.className="status";msg.textContent=e.message+" Bitte prüfe deine Internetverbindung und versuche es erneut."; $("verses").append(msg)}
+ finally{$("ask").disabled=false;$("ask").textContent="Biblische Antwort suchen"}
+}
+$("ask").addEventListener("click",ask);
+$("clear").addEventListener("click",()=>{if(confirm("Möchtest du den lokalen Verlauf löschen?")){localStorage.removeItem(KEY);renderHistory()}});
+renderHistory();
 </script></body></html>
