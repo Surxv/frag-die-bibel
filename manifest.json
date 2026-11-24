@@ -1,0 +1,9 @@
+{
+  "name": "Frag die Bibel",
+  "short_name": "Frag die Bibel",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3efe5",
+  "theme_color": "#244b38",
+  "description": "Fragen stellen und Antworten mit Bibelstellen entdecken."
+}
